@@ -2,10 +2,10 @@
   "name": "mvcapp",
   "version": "1.0.0",
   "description": "MVC shopping cart app",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon lib/index.js --exec babel-node",
-    "build": "babel lib -d dist",
+    "start": "nodemon index.js --exec babel-node",
+    "build": "babel index -d dist",
     "serve": "node dist/index.js"
   },
   "engines": {
