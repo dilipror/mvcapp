@@ -1,37 +1,33 @@
-userSchema {
-	userId		: String
-	name		: String,
-	address		: String,
-	username	: { type: String, required: true, unique: true, default: this.name},
-	password	: { type: String, required: true, default: "password"},
-	admin		: { type: Boolean, default: false},
-	cartId		: String,
-	dateCreated	: Date
-}
-
 // State is going to hold one of 3 states "empty", "loaded", "ordered"
-cartSchema {
-	cartId		: { type: String, unique: true }
-	items		: [{
-		itemId	: String,
-		quantity: Number
-	}]
-	totalCost	: Number,
-	State		: String
+userSchema {
+  userId      : { type: String, required: true},
+  name        : { type: String, required: true},
+  address     : { type: String, required: true},
+  username    : { type: String, required: true, unique: true, default: this.name},
+  password    : { type: String, required: true, default: "password"},
+  admin       : { type: Boolean, default: false},
+  cart        : {
+    items     : [{
+                itemId  : { type: String, required: true},
+                quantity: { type: Number, default: 0}
+              }]
+    totalCost : Number,
+    State     : String
+  }
+  dateCreated : Date
 }
 
 // State is going to hold one of 3 states "confirmed", "paid", "delivered"
 orderSchema {
-	userId			: String,
-	cartId			: String,
-	State			: String,
-	transactionId	: String
+  userId        : String,
+  State         : String,
+  transactionId : String
 }
 
 itemSchema {
-	itemId		: String,
-	name		: String,
-	cost		: Number,
-	Vendor		: String,
-	Inventory	: Number
+  itemId    : { type: String, required: true},
+  name      : { type: String, required: true},
+  cost      : { type: Number, required: true},
+  Vendor    : { type: String, required: true},
+  Inventory : { type: String, default: 0},
 }

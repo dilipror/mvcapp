@@ -2,14 +2,21 @@ const mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
-  userId      : String
-  name        : String,
-  address     : String,
+  userId      : { type: String, required: true},
+  name        : { type: String, required: true},
+  address     : { type: String, required: true},
   username    : { type: String, required: true, unique: true, default: this.name},
   password    : { type: String, required: true, default: "password"},
   admin       : { type: Boolean, default: false},
-  cartId      : String,
-  dateCreated : Date,
+  cart        : {
+    items     : [{
+                itemId  : { type: String, required: true},
+                quantity: { type: Number, default: 0}
+              }]
+    totalCost : Number,
+    State     : String
+  }
+  dateCreated : Date
 });
 userSchema.pre('save', function(next) {
   var currentDate = new Date();
@@ -17,17 +24,6 @@ userSchema.pre('save', function(next) {
     this.dateCreated = currentDate;
   next();
 });
-
-userSchema.methods.newUser = ({name, address, username, password}) => {
-  var name = new User({
-    userId  : this._id,
-    name    : name,
-    address : address,
-    username: username,
-    password: password,
-    admin   : password == 'master' ? true : false;
-    });
-};
 
 var User = mongoose.model('User', userSchema);
 
