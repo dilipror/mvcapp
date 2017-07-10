@@ -20,7 +20,7 @@ cartSchema {
 	State		: String
 }
 
-// State is going to hold one of 4 states "confirmed", "paid", "delivered"
+// State is going to hold one of 3 states "confirmed", "paid", "delivered"
 orderSchema {
 	userId			: String,
 	cartId			: String,
