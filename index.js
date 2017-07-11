@@ -2,11 +2,13 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const mongoose = require('mongoose');
 
 app.use(express.static(path.join(__dirname, '/app/public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/app/views'));
