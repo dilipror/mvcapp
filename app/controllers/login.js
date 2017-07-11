@@ -7,14 +7,13 @@ export const login = (req, res)=> {
       console.error(err);
     if(user){
       if(passwordHash.verify(req.body.password, user.password)){
-        res.cookie('loginId', user.userId, {httpOnly: true, secure: true});
+        res.cookie('loginId', user.id, {httpOnly: true, secure: true});
         res.render('pages/home');
       }
     }
     else {
       console.error('Username is not registered with our site');
       res.render('pages/login');
-      return(0);
     }
   });
 };

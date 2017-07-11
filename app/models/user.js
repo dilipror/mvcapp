@@ -14,7 +14,6 @@ let usernameValidator = (username) => {
 
 let Schema = mongoose.Schema;
 let userSchema = new Schema({
-  userId      : { type: String, required: true},
   name        : { type: String, required: true},
   address     : { type: String, required: true},
   username    : { type: String, required: true, unique: true, validate: usernameValidator()},
@@ -40,11 +39,6 @@ userSchema.pre('save', (next) => {
 userSchema.pre('save', (next) => {
   if (this.password === 'masterPassword')
     this.admin = true;
-  next();
-});
-
-userSchema.pre('validate', (next) => {
-  this.userId = mongoose.Types.ObjectId();
   next();
 });
 
