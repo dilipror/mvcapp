@@ -43,19 +43,6 @@ userSchema.pre('save', (next) => {
   next();
 });
 
-// userSchema.pre('validate', (next) => {
-//   let user = mongoose.model('user', userSchema);
-//   user.findOne({ 'username': this.username }, 'username',(err, user) => {
-//     if (err)
-//       return console.log(err);
-//     if(user){
-//       console.log("username already exists, please choose different one.");
-//       process.exit(0);
-//     }
-//   });
-//   next();
-// });
-
 let user = mongoose.model('user', userSchema);
 
 module.exports = user;
