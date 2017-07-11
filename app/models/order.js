@@ -10,4 +10,4 @@ let orderSchema = new Schema({
 
 let order = mongoose.model('order', orderSchema);
 
-module.exports = order;
+export {order} ;
