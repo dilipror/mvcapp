@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
-var orderSchema = new Schema({
+let Schema = mongoose.Schema;
+
+let orderSchema = new Schema({
   userId        : String,
-  cartId        : String,
-  State         : String,
+  state         : { type: String, enum: ['confirmed', 'paid', 'delivered']},
   transactionId : String
 });
 
-var order = mongoose.model('order', userSchema);
+let order = mongoose.model('order', orderSchema);
 
 module.exports = order;
