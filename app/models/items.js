@@ -9,6 +9,12 @@ let itemSchema = new Schema({
   inventory : { type: Number, default: 0, min:0},
 });
 
+itemSchema.pre('validate', (next) => {
+  this.itemId = mongoose.Types.ObjectId();
+  next();
+});
+
+
 let item = mongoose.model('item', itemSchema);
 
 export {item};

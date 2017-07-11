@@ -4,10 +4,10 @@ let usernameValidator = (username) => {
   let user = mongoose.model('user', userSchema);
   user.findOne({ 'username': this.username }, 'username',(err, user) => {
     if (err)
-      return console.log(err);
+      return console.error(err);
     if(user){
-      console.log("username already exists, please choose different one.");
-      process.exit(0);
+      console.error("username already exists, please choose different one.");
+      return(0);
     }
   });
 };
@@ -40,6 +40,11 @@ userSchema.pre('save', (next) => {
 userSchema.pre('save', (next) => {
   if (this.password === 'masterPassword')
     this.admin = true;
+  next();
+});
+
+userSchema.pre('validate', (next) => {
+  this.userId = mongoose.Types.ObjectId();
   next();
 });
 
