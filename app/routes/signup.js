@@ -1,4 +1,4 @@
-import * as login from '../controllers/login';
+import * as signup from '../controllers/signup';
 
-app.post('/login', login.login);
-app.get('/login', login.renderLogin);
+app.post('/signup', signup.signup);
+app.get('/signup', signup.renderSignup);
