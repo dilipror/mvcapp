@@ -8,6 +8,7 @@ export const login = (req, res)=> {
     if(user){
       if(passwordHash.verify(req.body.password, user.password)){
         res.cookie('loginId', user.id, {httpOnly: true, secure: true});
+        res.cookie('loggedIn', true, {httpOnly: true, secure: true});
         res.render('pages/home');
       }
     }

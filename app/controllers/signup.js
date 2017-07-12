@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const passwordHash = require('password-hash');
 import {User} from '../models/user';
 

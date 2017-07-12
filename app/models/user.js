@@ -24,7 +24,7 @@ let userSchema = new Schema({
                 quantity: Number
               }],
     totalCost : { type: Number, default: 0},
-    state     : { type: String, enum: ['empty', 'loaded', 'ordered']}
+    state     : { type: String, enum: ['empty', 'loaded']}
   },
   dateCreated : Date
 });
