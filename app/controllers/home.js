@@ -29,13 +29,9 @@ export const addToCart = (req, res)=> {
 };
 
 export const renderHome = (req, res) => {
-  if(req.cookies.loggedin) {
-    Item.find({}, (err, items) => {
-      if (err)
-        console.error(err);
-      res.render('pages/home', items);
-    });
-  }
-  else
-    res.render('pages/login');
+  Item.find({}, (err, items) => {
+    if (err)
+      console.error(err);
+    res.render('pages/home', items);
+  });
 };
