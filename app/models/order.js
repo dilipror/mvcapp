@@ -7,6 +7,6 @@ let orderSchema = new Schema({
   state         : { type: String, enum: ['confirmed', 'paid', 'delivered']},
 });
 
-let order = mongoose.model('order', orderSchema);
+let Order = mongoose.model('Order', orderSchema);
 
-export {order} ;
+export {Order} ;

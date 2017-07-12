@@ -8,6 +8,6 @@ let itemSchema = new Schema({
   inventory : { type: Number, default: 0, min:0},
 });
 
-let item = mongoose.model('Item', itemSchema);
+let Item = mongoose.model('Item', itemSchema);
 
-export {item};
+export {Item};

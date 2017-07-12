@@ -42,7 +42,7 @@ userSchema.pre('save', (next) => {
   next();
 });
 
-let user = mongoose.model('user', userSchema);
+let User = mongoose.model('User', userSchema);
 
-export {user};
+export {User};
 
