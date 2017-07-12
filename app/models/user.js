@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 let usernameValidator = (username) => {
-  let user = mongoose.model('user', userSchema);
-  user.findOne({ 'username': this.username }, 'username',(err, user) => {
+  User.findOne({ 'username': this.username }, 'username',(err, user) => {
     if (err)
       return console.error(err);
     if(user){
@@ -16,7 +15,7 @@ let Schema = mongoose.Schema;
 let userSchema = new Schema({
   name        : { type: String, required: true},
   address     : { type: String, required: true},
-  username    : { type: String, required: true, unique: true, validate: usernameValidator()},
+  username    : { type: String, required: true, unique: true, validate: usernameValidator},
   password    : { type: String, required: true, minlength: 4, maxlength: 20},
   admin       : { type: Boolean, default: false},
   cart        : {
