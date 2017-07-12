@@ -14,18 +14,28 @@ export const addToCart = (req, res)=> {
       userId,
       {$push: {'cart.items.itemId': req.body.itemId, 'cart.items.quantity': req.body.quantity}, $inc:  {'cart.totalCost': itemCost*req.body.quantity}, 'cart.state': 'loaded'},
       {runValidators: true},
-      (err, raw) => {
+      (err, user) => {
         if (err)
           return console.error(err);
-        console.log('mongo response : ', raw);
-      }
-    );
-    res.render('pages/home');
+        Item.find({}, (err, items) => {
+          if(err)
+            console.error(err);
+          res.render('pages/home', items, user);
+        });
+      });
   }
   else
     res.render('pages/login');
 };
 
 export const renderHome = (req, res) => {
-  res.render('pages/home');
+  if(req.cookies.loggedin) {
+    Item.find({}, (err, items) => {
+      if (err)
+        console.error(err);
+      res.render('pages/home', items);
+    });
+  }
+  else
+    res.render('pages/login');
 };
