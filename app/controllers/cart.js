@@ -33,11 +33,11 @@ export const createOrder = (req, res)=> {
           if (err)
             console.error(err);
         });
-        res.render('pages/cart', user);
+        res.redirect('/cart', user);
       });
     }
     else
-      res.render('pages/login');
+      res.redirect('/login');
 };
 
 export const renderCart = (req, res) => {
@@ -47,5 +47,5 @@ export const renderCart = (req, res) => {
     });
   }
   else
-    res.render('pages/login')
+    res.redirect('pages/login')
 };

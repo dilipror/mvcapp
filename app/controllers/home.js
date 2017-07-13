@@ -25,7 +25,7 @@ export const addToCart = (req, res)=> {
       });
   }
   else
-    res.render('pages/login');
+    res.redirect('/login');
 };
 
 export const renderHome = (req, res) => {
