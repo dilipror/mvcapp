@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+import db from '../config';
 
 let usernameValidator = (username) => {
   User.findOne({ 'username': this.username }, 'username',(err, user) => {
@@ -41,7 +42,7 @@ userSchema.pre('save', (next) => {
   next();
 });
 
-let User = mongoose.model('User', userSchema);
+let User = db.model('User', userSchema);
 
 export {User};
 

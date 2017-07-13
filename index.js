@@ -3,8 +3,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const mongoose = require('mongoose');
-mongoose.createConnection('mongodb://localhost/cart');
 import { router as loginRoutes } from './app/routes/login';
 import { router as signupRoutes } from './app/routes/signup';
 import { router as homeRoutes } from './app/routes/home';
