@@ -32,7 +32,6 @@ export const renderHome = (req, res) => {
   Item.find({}, (err, items) => {
     if (err)
       console.error(err);
-    items.push({id: 'abc',name: 'Test Item', cost: 10, vendor: 'Test vendor', inventory: 100});
     if(items)
       res.render('pages/home', {items: items});
   });

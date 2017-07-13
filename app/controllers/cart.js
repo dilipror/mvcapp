@@ -53,7 +53,7 @@ export const createOrder = (req, res)=> {
 export const renderCart = (req, res) => {
   if(req.signedCookies['loggedIn']){
     User.findById(req.signedCookies['loginId'], (err, user) => {
-      res.render('pages/cart', {user: user});
+      res.render('pages/cart', {cart: user.cart});
     });
   }
   else

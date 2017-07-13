@@ -11,6 +11,27 @@
 
 <main>
     <h2>Cart</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% cart.items.forEach((item) => { %>
+        <tr>
+            <td><%= item.itemId %></td>
+            <td><%= item.quantity %></td>
+        </tr>
+        <% }); %>
+        <br>
+        <tr>
+            <td>Total Cost</td>
+            <td><%= cart.totalCost %></td>
+        </tr>
+        </tbody>
+    </table>
 </main>
 
 <footer>
