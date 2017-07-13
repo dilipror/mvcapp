@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-import db from '../config';
+import db from '../configurations/dbConfig';
 
 let usernameValidator = (username) => {
   User.findOne({ 'username': this.username }, 'username',(err, user) => {
