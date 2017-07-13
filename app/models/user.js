@@ -17,7 +17,7 @@ let userSchema = new Schema({
   name        : { type: String, required: true},
   address     : { type: String, required: true},
   username    : { type: String, required: true, unique: true, validate: usernameValidator},
-  password    : { type: String, required: true, minlength: 4, maxlength: 20},
+  password    : { type: String, required: true},
   admin       : { type: Boolean, default: false},
   cart        : {
     items     : [{

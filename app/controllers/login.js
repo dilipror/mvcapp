@@ -12,7 +12,7 @@ export const login = (req, res)=> {
         if(user.admin){
           res.cookie('isAdmin', true, {httpOnly: true, secure: true, signed: true});
         }
-        res.redirect('/home');
+        res.redirect('/');
       }
     }
     else {

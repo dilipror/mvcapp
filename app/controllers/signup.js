@@ -18,7 +18,7 @@ export const signup = (req, res)=> {
       return console.error(err);
   });
   console.log('new user created :' + req.body.name);
-  res.redirect('/home');
+  res.redirect('/');
 };
 
 export const renderSignup = (req, res) => {

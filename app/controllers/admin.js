@@ -13,7 +13,7 @@ export const addItem = (req, res) => {
         return console.error(err);
     });
     console.log('new item created :', req.body.name);
-    res.redirect('/home');
+    res.redirect('/');
   }
   else
     res.redirect('/login');
