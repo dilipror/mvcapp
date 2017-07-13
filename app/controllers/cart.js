@@ -57,5 +57,5 @@ export const renderCart = (req, res) => {
     });
   }
   else
-    res.redirect('pages/login')
+    res.redirect('/login')
 };
