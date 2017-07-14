@@ -1,7 +1,7 @@
 import {Item} from '../models/item';
 
 export const addItem = (req, res) => {
-  if(req.signedCookies['loggedIn'] && req.signedCookies['isAdmin']) {
+  if(req.signedCookies['loginId'] && req.signedCookies['isAdmin']) {
     let newItem = new Item({
       name      : req.body.name,
       cost      : req.body.cost,

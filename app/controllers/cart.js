@@ -3,7 +3,7 @@ import {Item} from '../models/item';
 import {Order} from '../models/order';
 
 export const createOrder = (req, res)=> {
-    if(req.signedCookies['loggedIn']) {
+    if(req.signedCookies['loginId']) {
       const userId = req.signedCookies['loginId'];
       User.findById(userId, (err, user) => {
         if (err)
