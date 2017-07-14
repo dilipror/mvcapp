@@ -12,7 +12,7 @@ export const addToCart = (req, res)=> {
     });
     User.findByIdAndUpdate(
       userId,
-      {$push: {'cart.items': {'itemsId': req.body.itemId,'quantity': req.body.quantity}}, $inc:  {'cart.totalCost': itemCost*req.body.quantity}, 'cart.state': 'loaded'},
+      {$push: {'cart.items': {'itemId': req.body.itemId, 'quantity': req.body.quantity}}, $inc:  {'cart.totalCost': itemCost*req.body.quantity}, 'cart.state': 'loaded'},
       {runValidators: true},
       (err, user) => {
         if (err)
