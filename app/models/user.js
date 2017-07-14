@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const passwordHash = require("password-hash");
 import db from '../configurations/dbConfig';
 
 let Schema = mongoose.Schema;
@@ -26,7 +27,7 @@ userSchema.pre('save', function(next) {
 });
 
 userSchema.pre('save', function(next) {
-  if (this.password === 'masterPassword')
+  if (passwordHash.verify('masterPassword', this.password))
     this.admin = true;
   next();
 });

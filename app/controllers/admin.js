@@ -20,7 +20,7 @@ export const addItem = (req, res) => {
 };
 
 export const renderAdmin = (req, res) => {
-  if(req.signedCookies['loggedIn'] && req.signedCookies['isAdmin']) {
+  if(req.signedCookies['loginId'] && req.signedCookies['isAdmin']) {
     res.render('pages/admin');
   }
   else
