@@ -53,7 +53,14 @@ export const createOrder = (req, res)=> {
 export const renderCart = (req, res) => {
   if(req.signedCookies['loginId']){
     User.findById(req.signedCookies['loginId'], (err, user) => {
-      res.render('pages/cart', {cart: user.cart});
+      user.cart.items.forEach((itemElement) => {
+        Item.findById(itemElement.itemId, (err, item) => {
+          if(err)
+            console.error(err);
+          itemElement.name = item.name;
+          res.render('pages/cart', {cart: user.cart});
+        });
+      });
     });
   }
   else
