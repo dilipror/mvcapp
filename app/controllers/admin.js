@@ -23,7 +23,7 @@ export const addItem = (req, res) => {
 
 export const renderAdmin = (req, res) => {
   if(req.signedCookies['isAdmin']) {
-    res.render('pages/admin');
+    res.render('pages/admin', {user: req.userData.username});
   }
   else
     res.redirect('/login');
