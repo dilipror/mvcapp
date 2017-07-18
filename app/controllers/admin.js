@@ -1,12 +1,13 @@
 import {Item} from '../models/item';
 
 export const addItem = (req, res) => {
-  if(req.signedCookies['loginId'] && req.signedCookies['isAdmin']) {
+  if(req.signedCookies['isAdmin']) {
     let newItem = new Item({
       name      : req.body.name,
       cost      : req.body.cost,
       vendor    : req.body.vendor,
-      inventory : req.body.inventory
+      inventory : req.body.inventory,
+      imagePath : req.file.path
     });
     newItem.save((err) => {
       if(err)
@@ -20,7 +21,7 @@ export const addItem = (req, res) => {
 };
 
 export const renderAdmin = (req, res) => {
-  if(req.signedCookies['loginId'] && req.signedCookies['isAdmin']) {
+  if(req.signedCookies['isAdmin']) {
     res.render('pages/admin');
   }
   else
