@@ -10,6 +10,7 @@ export const login = (req, res) => {
         res.cookie('loginId', user.id, {httpOnly: true, signed: true});
         if(user.admin)
           res.cookie('isAdmin', true, {httpOnly: true, signed: true});
+        console.log('logged in as : ', user.name);
         res.status(200).redirect('/');
       }
       else{
